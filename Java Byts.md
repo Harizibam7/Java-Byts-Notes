@@ -90,7 +90,7 @@ class Test{
 		System.out.println("s");
 	}
 }
-**OUTPUT : null**
+OUTPUT : null
 ```
 
 > JVM will provide default value only for static and non-static(instance) variables, but not for local variables.
@@ -633,3 +633,50 @@ class Product{
 ```
 
 > Note: In the above code, (int id, String name) both of them are instance variables.  The methods getId, setId, getName, setName are also instance methods. Means the id variable and name variable also visible in the instance methods.  The paramter variable (id, name) also have same name as instance variable. To identifiy the instance variable we are using ‘**`this`**’ keyword.
+
+### Tightly Encapsulated class
+- If every instance variable of the class declared by using private modifier then that class is called as tightly encapsulated class. 
+- It is not required to check whether those properties are having corresponding public setter and getter methods. 
+- If parent class is not tightly encapsulated then no child is tightly encapsulated.
+### Is - A Relationship
+
+<aside>
+	⚠️  It is also known inheritance.  By using extends keyword we will define inheritance. 
+</aside>
+
+#### The main advantage of Is-A relationship code reusability.
+
+```java 
+
+class A{
+	public void m1(){
+		System.out.println("A-m1");
+	}
+}
+
+class B extends A{
+	public void m2(){
+		System.out.println("B-m2");
+	}
+}
+
+public class Test{
+	public static void main(String[] args){
+		A a = new A();
+		a.m1(); // A-m1
+		//a.m2(); //(compiler) error: cannot find symbol a.m2();
+		B b = new B();
+		b.m1(); // A-m1
+		b.m2(); // B-m2
+		A a2 = new B();
+		a2.m1(); // A-m1
+		//a2.m2(); //(compiler) error: cannot find symbol a2.m2();
+		//B b2 = new A(); //(compiler) error: incompatible types: A cannot be converted to B (B b2 = new A();)
+	}
+}
+``` 
+
+#### Note:  
+- We can use parent reference to represent child object.  But by using this reference we can invoke only parent methods and we cannot invoke child specific methods. 
+- The most common methods we have to place in the parent class and the specific we have to place in child class. 
+![[Pasted image 20240829184505.png]]
