@@ -679,4 +679,5 @@ public class Test{
 #### Note:  
 - We can use parent reference to represent child object.  But by using this reference we can invoke only parent methods and we cannot invoke child specific methods. 
 - The most common methods we have to place in the parent class and the specific we have to place in child class. 
+
 ![[Pasted image 20240829184505.png]]
